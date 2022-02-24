@@ -25,15 +25,20 @@ def getCasualties(loc):
     # 표시할 df head
     # 사용할 csv파일이 1인지 2인지에따라 head가 다름으로 구분해 준다.
     if loc == csvData1:
-        csvHead = ['발생일', '사망자수', '중상자수', '경상자수', '부상신고자수', '발생지_시도', '발생지_시군구', '피해자_당사자종별']
+        csvHead = ['발생일', '사망자수', '중상자수', '경상자수', '부상신고자수',
+                   '발생지_시도', '발생지_시군구', '피해자_당사자종별', '도로형태', '주야']
+        fileName = jsonData1
     elif loc == csvData2:
-        csvHead = ['발생년월일시', '사망자수', '중상자수', '경상자수', '부상신고자수', '발생지시도', '발생지시군구', '피해자_당사자종별']
+        csvHead = ['발생년월일시', '사망자수', '중상자수', '경상자수', '부상신고자수',
+                   '발생지시도', '발생지시군구', '피해자_당사자종별', '도로형태', '주야']
+        fileName = jsonData2
     else:
         print('형식에 맞는 csv파일인지 확인하세요')
         return
     df1 = df[csvHead]
-    df2 = df1.loc[df[csvHead[7]] == '보행자']             # 피해자_당사자종별 중 보행자만
-    df3 = df2.loc[df[csvHead[5]] == '서울']               # 발생지_시도 중 서울만
+    df2 = df1.loc[df1[csvHead[7]] == '보행자']             # 피해자_당사자종별 중 보행자만
+    df3 = df2.loc[df2[csvHead[5]] == '서울']               # 발생지_시도 중 서울만
+    # df3 = df2_1.loc[df2_1[csvHead[8]].isin(['횡단보도상', '교차로횡단보도내', '횡단보도부근'])]
 
     # 강남의 ~~구들
     guList = ['양천구', '구로구', '영등포구', '금천구', '동작구', '관악구', '강남구', '송파구', '은평구', '서대문구', '마포구', '동대문구', '성동구', '중랑구',
@@ -61,7 +66,7 @@ def getCasualties(loc):
 
     gangnam_casualties['서울'] = guDict
     total_stores_json = json.dumps(gangnam_casualties, ensure_ascii=False)
-    with open(csvLoc+jsonData2, 'w', encoding='utf_8') as f:
+    with open(csvLoc+fileName, 'w', encoding='utf_8') as f:
         f.write(total_stores_json)
 
     return gangnam_casualties
@@ -96,7 +101,10 @@ def barGraph():
 
         accident1.append(sum1)
         accident2.append(sum2)
-        a = round(float(sum2/sum1)*100, 2)
+        if sum1 != 0:
+            a = round(float(sum2/sum1)*100, 2)
+        else:
+            a = 0
         persent.append(a)
 
     fig = plt.figure()
@@ -104,8 +112,8 @@ def barGraph():
     x = np.arange(5)
 
     # 바생성
+    ax.bar(x, accident1, color='#ffd400', width=0.45, zorder=3, label='사상자')
     ax.bar(x, accident2, color='#ff7b5a', width=0.45, zorder=3, label='사망자')
-    ax.bar(x, accident1, color='#ffd400', width=0.45, zorder=3, label='사상자', bottom=accident2)
     ax.set_title('서울 연도별 사고현황')                 # 그래프 제목
     plt.xticks(x, yearList)                          # x축을 각각의 연도로
     plt.legend(loc='upper right')                     # 범례를 좌상단으로
@@ -136,7 +144,10 @@ def plotGraph(gu):
         sum = gugun2[gu][year]['사망자수'] + gugun1[gu][year]['중상자수'] + gugun1[gu][year]['경상자수'] + gugun1[gu][year]['부상신고자수']
         accident1.append(sum)
         accident2.append(gugun2[gu][year]['사망자수'])
-        a = round(float(gugun2[gu][year]['사망자수']/sum)*100, 2)
+        if sum != 0:
+            a = round(float(gugun2[gu][year]['사망자수']/sum)*100, 2)
+        else:
+            a = 0
         persent.append(a)
 
     # print(accident1, accident2, persent)
@@ -158,11 +169,11 @@ def plotGraph(gu):
 
 
 if __name__ == '__main__':
-    # getCasualties(csvData2)
-    # plotGraph('양천구')
+    getCasualties(csvData2)
+    getCasualties(csvData1)
+
     barGraph()
-    # # getCasualties(data2)
-    #
+
     # guList = ['양천구', '구로구', '영등포구', '금천구', '동작구', '관악구', '강남구',
     #           '송파구', '은평구', '서대문구', '마포구', '동대문구', '성동구', '중랑구',
     #           '광진구', '강북구', '도봉구']
