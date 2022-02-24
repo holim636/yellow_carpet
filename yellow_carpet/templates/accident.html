@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    {% load static %}
+    <script>
+        function createImg(){
+            var option = document.getElementsByTagName("option")
+            var optionVal=""
+
+            for (var i=1 ; i<option.length ; i++){
+                if (option[i].selected){
+                    optionVal=option[i].value
+                }
+            }
+
+            var img = document.createElement("img")
+            img.setAttribute("src",optionVal)
+
+            var div = document.getElementById("imgview")
+            var chd = document.querySelector("#imgview > img")
+            div.replaceChild(img,chd)
+        }
+
+    </script>
+  
+
+</head>
+<body>
+    
+    <h3>서울시 보행자 교통사고 현황</h3>
+
+    <iframe src="../static/charts/SeoulAccident.html" title="서울시 보행자 교통사고" width="500" height="350" style="border:none;"></iframe>
+
+    <div>
+        <select id="gu">
+            <option value="0">구선택</option>
+            <option value="{% static 'img/gangnam.png' %}">강남구</option> <!-- 그래프 색상 정해지면 경로 넣어서 수정!-->
+            <option value="{% static 'img/.png' %}">강북구</option>
+            <option value="{% static 'img/.png' %}">관악구</option>
+            <option value="{% static 'img/.png' %}">광진구</option>
+            <option value="{% static 'img/.png' %}">구로구</option>
+            <option value="{% static 'img/.png' %}">금천구</option>
+            <option value="{% static 'img/.png' %}">도봉구</option>
+            <option value="{% static 'img/.png' %}">동대문구</option>
+            <option value="{% static 'img/.png' %}">동작구</option>
+            <option value="{% static 'img/.png' %}">마포구</option>
+            <option value="{% static 'img/.png' %}">서대문구</option>
+            <option value="{% static 'img/.png' %}">성동구</option>
+            <option value="{% static 'img/.png' %}">송파구</option>
+            <option value="{% static 'img/.png' %}">양천구</option>
+            <option value="{% static 'img/.png' %}">영등포구</option>
+            <option value="{% static 'img/.png' %}">은평구</option>
+            <option value="{% static 'img/.png' %}">중랑구</option>
+        </select>
+
+        <button onclick="createImg()">검색</button>
+    </div>
+
+    <div id="imgview"><img src=""></div>
+</body>
+</html>
