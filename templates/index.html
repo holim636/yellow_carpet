@@ -15,11 +15,11 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!--modal 구현 위한 jq 불러오기 (js보다 앞에 작성!) 연우님은 3.5.1-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+  <script type="text/javascript" src="../static/js/bootstrap.js"></script>
   <!--accident modal에 사용되는 js-->
-  <script type="text/javascript" src="{% static 'js/accident.js' %}"></script>
+  <script type="text/javascript" src="../static/js/accident.js"></script>
   <!--이미지 슬라이드에 사용되는 js-->
-  <script type="text/javascript" src="{% static 'js/slide.js' %}"></script>
+  <script type="text/javascript" src="../static/js/slide.js"></script>
 
   <style>
     @charset "UTF-8";
@@ -141,8 +141,9 @@
 
       <!-- 3-1.옐로우카펫이란? -->
       <div style="margin-left: -8em; margin-bottom: 4em; width:235%;">
-        <div style="text-align: center; font-size: 3.5rem; font-weight: bold; margin-bottom: 1.3em; letter-spacing: 1px;">
-          아이들을 지키는<br>옐로우 카펫
+        <div
+          style="text-align: center; font-size: 3.5rem; font-weight: bold; margin-bottom: 1.3em; letter-spacing: 1px;">
+          아이들을 지키는<br />옐로우 카펫
         </div>
         <div style="text-align: center; font-size: 15pt; letter-spacing: 1.5px;">
           옐로우 카펫은 보행 전 안전한 곳에서 기다리게 하고,<br>
@@ -159,7 +160,7 @@
           <img src="{% static 'img/web/2.png' %}" style="width: 70px; height: 70px;">
         </button>
         <div class="modal fade" id="exampleModal">
-          <div class="modal-dialog-centered modal-lg">
+          <div class="modal-dialog modal-lg">
             <div class="modal-content" style="width:100%;height:100%">
 
               <div class="modal-header">
