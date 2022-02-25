@@ -6,9 +6,10 @@ import matplotlib as mpl
 import matplotlib.font_manager as fm
 import csv
 import os
+import math
 
-font_path = "../yellow/res/font/NanumGothic.ttf"
-PATH = "../yellow/res/data/"
+font_path = "../yellow_carpet/res/font/NanumGothic.ttf"
+PATH = "../yellow_carpet/res/data/"
 dat1 = '도로교통공단_어린이 교통사고 현황_20191231.csv'
 dat2 = '도로교통공단_어린이 사망교통사고 정보_20191231.csv'
 dat3 = 'yellow.json'
@@ -183,20 +184,49 @@ def accident_data(): #교통사고 분석
 
 #개노가다 시작
 def distance(x, y, x1, y1):
-    newx = abs((x - x1) * 10000)
-    newy = abs((y - y1) * 10000)
-    return pow(newx, 2) + pow(newy, 2)
-def make_list():
 
-def short_cut(x, y):
-    #y는 리스트로 넘기는고
-    #x는 하나의 점
+    a = float(x) - float(x1)
+    b = float(y) - float(y1)
+    newx = abs(a) * 100
+    newy = abs(b) * 100
+    return math.sqrt(pow(newx, 2) + pow(newy, 2))
 
-    #같은 구역에 있는것만 확인을 원함
+gulist = ['강남구', '강북구', '관악구', '광진구', '구로구', '금천구', '도봉구', '동대문구', '동작구', '마포구', '서대문구', '성동구', '송파구', '양천구',
+              '영등포구', '은평구', '중랑구']
 
-def make_short_list(name=''):
+def make_distance():
+    b = load_data(name=dat2)
+    c = load_data_json(name=dat3)
+    new_b = b[b['발생지시도'] == '서울']
+    new_b = new_b[new_b['사고유형_대분류'] == '차대사람']
+    new_b = new_b.loc[:, ['발생년','발생년월일시', '사망자수', '부상자수','경도','위도']]
+    new_b['총사상자'] = new_b['사망자수'] + new_b['부상자수']
+    #new_b['거리'] = 0
 
+    c = c.loc[:, ['date', 'lon','lat']]
+    c['date'] = pd.to_datetime(c['date'])
+    c['date'] = c['date'].dt.year
+    c['date'] = pd.to_numeric(c['date'])
+    c = c[c['date'] <= 2019]
 
+    for i in new_b.index:
+        alon = new_b._get_value(i, '경도')
+        alat = new_b._get_value(i, '위도')
+        min = 5
+        for j in c.index:
+            if new_b._get_value(i,'발생년') >= c._get_value(j,'date'):
+                clon = c._get_value(j,'lon')
+                clat = c._get_value(j,'lat')
+                note = distance(alon, alat, clon, clat)
+                if note < min:
+                    min = note
+        new_b.at[i, '거리'] = min
+    #print(new_b['거리'])
+    corr_matirix = new_b.corr()
+    print(corr_matirix)
+    plt.figure()
+    plt.scatter(new_b['발생년월일시'],new_b['거리'], color='red', alpha=.1)
+    plt.show()
 
 
 #여기서 구 이름만 입력해주면 됩니다
@@ -207,5 +237,5 @@ def make_short_list(name=''):
 #연도별 사고건수 출력 type1은 사망사고(B데이터), 0은 모든사고(A데이터)
 #detail_plot_data(name = '',type=0)
 #연도별 사고 현황 출력 type1은 사망사고(B데이터) 0은 모든 사고(A데이터)
-accident_data()
+make_distance()
 #corr_data_second(name = '강남구')
