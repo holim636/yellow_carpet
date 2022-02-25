@@ -112,8 +112,8 @@ def barGraph():
     x = np.arange(5)
 
     # 바생성
-    ax.bar(x, accident1, color='#ffd400', width=0.45, zorder=3, label='사상자')
-    ax.bar(x, accident2, color='#ff7b5a', width=0.45, zorder=3, label='사망자')
+    ax.bar(x+0.15, accident1, color='#ffd400', width=0.3, zorder=3, label='사상자')
+    ax.bar(x+0.15, accident2, color='#ff7b5a', width=0.3, zorder=3, label='사망자')
     ax.set_title('서울 연도별 사고현황')                 # 그래프 제목
     plt.xticks(x, yearList)                          # x축을 각각의 연도로
     plt.legend(loc='upper right')                     # 범례를 좌상단으로
