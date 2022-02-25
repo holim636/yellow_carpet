@@ -17,14 +17,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!--강사님 수정-->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
-  <!--accident modal에 사용되는 js-->
+  <!--1번 modal에 사용되는 js-->
   <script type="text/javascript" src="../static/js/accident.js"></script>
+  <!--3번 modal에 사용되는 js-->
+  <script type="text/javascript" src="../static/js/time.js"></script>
   <!--이미지 슬라이드에 사용되는 js-->
   <script type="text/javascript" src="../static/js/slide.js"></script>
   <!--font-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Kirang+Haerang&family=Poor+Story&display=swap" rel="stylesheet">
 
   <style>
     @charset "UTF-8";
@@ -93,38 +95,20 @@
 
 <body>
   <!-- 1.메뉴바 구성 -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: white !important;">
-    <div class="container-fluid" style="background-color:rgb(255, 192, 0);">
-      <a class="navbar-brand" href="{% url 'index' %}" style="margin-left: 3em;">
-        <img src="{% static 'img/web/whiteicon.png' %}"
-          style="width: 40px; height: 40px; margin-top: 0.2em; margin-bottom: 0.2em;">
-        <img src="{% static 'img/web/whitefont.png' %}" style="width: 160px; height: 32px; margin-top: 0.2em; ">
+  <div class="container-fluid">
+    <div style="background-color:black;text-align:center;">
+      <a href="{% url 'index' %}">
+        <img src="{% static 'img/web/yellowicon.png' %}"
+          style="width: 35px; height: 45px;  margin-top:1em ;margin-bottom: 1em;">
+        <img src="{% static 'img/web/yellowfont.png' %}" style="width: 160px; height: 32px; margin-top: 1em;margin-bottom: 0em; ">
       </a>
-      <!--? 무슨버튼-->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" style="margin-right: 17em;">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"
-              style="color: white; font-size: 1.5rem; font-family: 'Sunflower', sans-serif !important; font-weight: bold; margin-right:0.2em">어린이가 없는 곳에 천국은 없다</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"
-              style="color: white; font-size: 1.3rem; font-family: 'Sunflower', sans-serif !important; font-weight: bold; margin-right:2em; margin-top: 0.2em;" >-A.C.스윈번-</a>
-          </li>
-        </ul>
-
-      </div>
     </div>
-  </nav>
+
 
   <!-- 2.이미지 슬라이드 구성 (왼)-->
 
-  <div class="container" style="display: flex; ">
-    <div id="visual" style="margin-top:8em; margin-left: -5em; float:left; width:600 ; height:400">
+  <div class="container" style="display: flex;">
+    <div id="visual" style="margin-top:10em; margin-left: -7em; margin-bottom:5em; margin-right:2em; float:left; width:600 ; height:400">
       <div class="on"><a href="#"><img src="{% static 'img/web/image1.jpeg' %}" alt="1" style="width: 100%;height: 100%;"></a>
       </div>
       <div><a href="#"><img src="{% static 'img/web/image2.jpeg' %}" alt="2" style="width: 100%;height: 100%;"></a>
@@ -142,15 +126,15 @@
     </div>
 
     <!-- 3.옐로우카펫 소개 (오) -->
-    <div style="margin-top:8em; margin-left: 5em; margin-right:5em; display: inline-block; float:left; width:400">
+    <div style="margin-top:11em; margin-left: 5em; margin-right:5em; margin-bottom:5em ; display: inline-block; float:left; width:400">
 
       <!-- 3-1.옐로우카펫이란? -->
       <div style="margin-left: -8em; margin-bottom: 4em; width:235%;">
         <div
-          style="text-align: center; font-size: 3.5rem; font-weight: bold; margin-bottom: 1.3em; letter-spacing: 1px;">
+          style="text-align: center; font-family: 'Gowun Dodum', sans-serif !important; font-size: 3.5rem; font-weight: bold; margin-bottom: 1em; letter-spacing: 7px;">
           아이들을 지키는<br />옐로우 카펫
         </div>
-        <div style="text-align: center; font-size: 15pt; letter-spacing: 1.5px;">
+        <div style="text-align: center; font-family: 'Gowun Dodum', sans-serif !important; font-size: 15pt; letter-spacing: 1.5px;">
           옐로우 카펫은 보행 전 안전한 곳에서 기다리게 하고,<br>
           운전자는 이를 쉽게 인지하게 하고자 <br>
           바닥과 벽면을 노랗게 표시하는 교통안전 설치물이에요.
@@ -179,25 +163,25 @@
                 <div style="text-align: center;"><img src="{% static 'img/gu/seoul_total.png' %}"></div>
 
                 <div class="gu_chart" style="text-align: center;">
-                  <select class="custom-select" id="gu" style="width: 100px !important;">
+                  <select class="custom-select" style="width: 100px !important;">
                     <option value="0">구선택</option>
-                    <option value="{% static 'img/gu/강남구.png' %}">강남구</option>
-                    <option value="{% static 'img/gu/강북구.png' %}">강북구</option>
-                    <option value="{% static 'img/gu/관악구.png' %}">관악구</option>
-                    <option value="{% static 'img/gu/광진구.png' %}">광진구</option>
-                    <option value="{% static 'img/gu/구로구.png' %}">구로구</option>
-                    <option value="{% static 'img/gu/금천구.png' %}">금천구</option>
-                    <option value="{% static 'img/gu/도봉구.png' %}">도봉구</option>
-                    <option value="{% static 'img/gu/동대문구.png' %}">동대문구</option>
-                    <option value="{% static 'img/gu/동작구.png' %}">동작구</option>
-                    <option value="{% static 'img/gu/마포구.png' %}">마포구</option>
-                    <option value="{% static 'img/gu/서대문구.png' %}">서대문구</option>
-                    <option value="{% static 'img/gu/성동구.png' %}">성동구</option>
-                    <option value="{% static 'img/gu/송파구.png' %}">송파구</option>
-                    <option value="{% static 'img/gu/양천구.png' %}">양천구</option>
-                    <option value="{% static 'img/gu/영등포구.png' %}">영등포구</option>
-                    <option value="{% static 'img/gu/은평구.png' %}">은평구</option>
-                    <option value="{% static 'img/gu/중랑구.png' %}">중랑구</option>
+                    <option class="gu" value="{% static 'img/gu/강남구.png' %}">강남구</option>
+                    <option class="gu" value="{% static 'img/gu/강북구.png' %}">강북구</option>
+                    <option class="gu" value="{% static 'img/gu/관악구.png' %}">관악구</option>
+                    <option class="gu" value="{% static 'img/gu/광진구.png' %}">광진구</option>
+                    <option class="gu" value="{% static 'img/gu/구로구.png' %}">구로구</option>
+                    <option class="gu" value="{% static 'img/gu/금천구.png' %}">금천구</option>
+                    <option class="gu" value="{% static 'img/gu/도봉구.png' %}">도봉구</option>
+                    <option class="gu" value="{% static 'img/gu/동대문구.png' %}">동대문구</option>
+                    <option class="gu" value="{% static 'img/gu/동작구.png' %}">동작구</option>
+                    <option class="gu" value="{% static 'img/gu/마포구.png' %}">마포구</option>
+                    <option class="gu" value="{% static 'img/gu/서대문구.png' %}">서대문구</option>
+                    <option class="gu" value="{% static 'img/gu/성동구.png' %}">성동구</option>
+                    <option class="gu" value="{% static 'img/gu/송파구.png' %}">송파구</option>
+                    <option class="gu" value="{% static 'img/gu/양천구.png' %}">양천구</option>
+                    <option class="gu" value="{% static 'img/gu/영등포구.png' %}">영등포구</option>
+                    <option class="gu" value="{% static 'img/gu/은평구.png' %}">은평구</option>
+                    <option class="gu" value="{% static 'img/gu/중랑구.png' %}">중랑구</option>
                   </select>
                   <button class="btn btn-primary btn-sm" onclick="createImg()">검색</button>
                 </div>
@@ -211,7 +195,7 @@
             </div>
           </div>
         </div>
-        <!--3-2-2.교통사고와 옐로우 카펫의 상관관계 분석-->
+        <!--3-2-2.옐로우카펫 설치현황-->
         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal2"
           style="margin-right: 7%; background-color:black; border-radius: 10em; ">
           <img src="{% static 'img/web/5.png' %}" style="width: 70px; height: 70px;">
@@ -238,7 +222,7 @@
             </div>
           </div>
         </div>
-        <!--3-2-3.옐로우 카펫 설치현황-->
+        <!--3-2-3.교통사고와 옐로우카펫 상관분석-->
         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal3"
           style="margin-right: 7%; background-color:black; border-radius: 30pt;">
           <img src="{% static 'img/web/6.png' %}" style="width: 70px; height: 70px;">
@@ -254,8 +238,30 @@
                 </button>
               </div>
 
-              <div class="modal-body">
-                <div style="text-align: center;"><img src=""></div>
+              <div class="modal-body" style="text-align: center;">
+                <div style="font-weight:bold; font-size:1.3rem;">[연도별 시간대 교통사고 발생건수]</div>
+                <div><img src="{% static 'img/time/시간대별.png' %}"></div>
+
+                <div class="time_chart">
+                  <select class="custom-select" style="width: 100px !important;">
+                    <option value="0">연도선택</option>
+                    <option class="time" value="{% static 'img/time/2015.png' %}">2015년</option>
+                    <option class="time" value="{% static 'img/time/2016.png' %}">2016년</option>
+                    <option class="time" value="{% static 'img/time/2017.png' %}">2017년</option>
+                    <option class="time" value="{% static 'img/time/2018.png' %}">2018년</option>
+                    <option class="time" value="{% static 'img/time/2019.png' %}">2019년</option>
+                    <option class="time" value="{% static 'img/time/2015-2019.png' %}">전체</option>
+                  </select>
+                  <button class="btn btn-primary btn-sm" onclick="createImg3()">검색</button>
+                </div>
+
+                <div id="imgview3"><img src=""></div>
+                <div>
+                  <p style="margin-top:0.8em; font-weight:bold;">▼ 연도별 시간대 교통사고 발생건수와 옐로우카펫 설치개수 ▼</p>
+                  <img src="{% static 'img/time/주요시간대.png' %}">
+                  <p style="margin-top:0.8em; font-weight:bold;">▼ 교통사고 시간과 옐로우카펫 상관관계 분석 ▼</p>
+                  <img src="{% static 'img/time/시간상관관계.png' %}" style="width:600px; height:300px;">
+                </div>
               </div>
 
               <div class="modal-footer">

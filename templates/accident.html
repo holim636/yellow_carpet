@@ -64,3 +64,51 @@
     <div id="imgview"><img src=""></div>
 </body>
 </html>
+
+
+<!-- 1.메뉴바 구성 -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: white !important;">
+    <div class="container-fluid" style="background-color:rgb(255, 192, 0);">
+      <a class="navbar-brand" href="{% url 'index' %}" style="margin-left: 3em;">
+        <img src="{% static 'img/web/whiteicon.png' %}"
+          style="width: 40px; height: 40px; margin-top: 0.2em; margin-bottom: 0.2em;">
+        <img src="{% static 'img/web/whitefont.png' %}" style="width: 160px; height: 32px; margin-top: 0.2em; ">
+      </a>
+      <!--? 무슨버튼-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" style="margin-right: 17em;">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              style="color: white; font-size: 1.5rem; font-family: 'Sunflower', sans-serif !important; font-weight: bold; margin-right:0.2em">어린이가 없는 곳에 천국은 없다</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              style="color: white; font-size: 1.3rem; font-family: 'Sunflower', sans-serif !important; font-weight: bold; margin-right:2em; margin-top: 0.2em;" >-A.C.스윈번-</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1.메뉴바 구성 -->
+  <div class="container-fluid" style="background-color:white; text-align:center;">
+    <a class="navbar-brand" href="{% url 'index' %}" style="margin-left: 3em;">
+      <img src="{% static 'img/web/yellowicon.png' %}"
+        style="width: 55px; height: 65px; margin-top: 1.5em; margin-bottom: 0.2em;">
+      <p style="font-family: 'Kirang Haerang', cursive !important; color: rgb(253, 222, 17); font-size:2rem ;">Yellow Carpet</p>
+    </a>
+
+        <!-- 1.메뉴바 구성 -->
+  <div class="container-fluid">
+    <div style="background-color:black;text-align:center;">
+      <a href="{% url 'index' %}">
+        <img src="{% static 'img/web/yellowicon.png' %}"
+          style="width: 55px; height: 65px; margin-top: 1.5em; margin-bottom: 0.2em;">
+        <div style="font-family: 'Kirang Haerang', cursive !important; color: rgb(253, 222, 17); font-size:2rem ;">Yellow Carpet</div>
+      </a>
+    </div>
