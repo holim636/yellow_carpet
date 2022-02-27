@@ -212,8 +212,16 @@
               </div>
 
               <div class="modal-body">
-                <div style="text-align: center;"><img src="{% static 'img/yellowcarpet/2015-2019_옐로우카펫_사망사고 현황.png' %}">
-                </div>
+                <p style="margin-top:0.8em; font-weight:bold;">▼ 2015년 ▼</p>
+                <div style="text-align: center;"><img src="{% static 'img/yellowcarpet/2015yellow.jpg' %}" style="width:550px;height:510px"></div>
+                <p style="margin-top:0.8em; font-weight:bold;">▼ 2016년 ▼</p>
+                <div style="text-align: center;"><img src="{% static 'img/yellowcarpet/2016yellow.jpg' %}" style="width:550px;height:510px"></div>
+                <p style="margin-top:0.8em; font-weight:bold;">▼ 2017년 ▼</p>
+                <div style="text-align: center;"><img src="{% static 'img/yellowcarpet/2017yellow.jpg' %}" style="width:550px;height:510px"></div>
+                <p style="margin-top:0.8em; font-weight:bold;">▼ 2018년 ▼</p>
+                <div style="text-align: center;"><img src="{% static 'img/yellowcarpet/2018yellow.jpg' %}" style="width:550px;height:510px"></div>
+                <p style="margin-top:0.8em; font-weight:bold;">▼ 2019년 ▼</p>
+                <div style="text-align: center;"><img src="{% static 'img/yellowcarpet/2019yellow.jpg' %}" style="width:550px;height:510px"></div>
               </div>
 
               <div class="modal-footer">
@@ -239,7 +247,21 @@
               </div>
 
               <div class="modal-body" style="text-align: center;">
-                <div style="font-weight:bold; font-size:1.3rem;">[연도별 시간대 교통사고 발생건수]</div>
+                <div style="font-weight:bold; font-size:1.3rem; margin-bottom:1em;" >[차량사고 유형별 분석 : 안전운전 의무 불이행]</div>
+                <div><img src="{% static 'img/gu/차량사고유형별시각화.png' %}"></div>
+                <div><img src="{% static 'img/gu/안전운전의무불이행변화.png' %}"></div>
+
+                <div style="font-weight:bold; font-size:1.3rem; margin-top:2em; margin-bottom:1em;">[사상자와 옐로 카펫의 상관관계]</div>
+                <div>
+                  <p style="margin-top:0.8em; font-weight:bold;">▼ 연도별 사상자별 사건수와 옐로 카펫 설치개수 ▼</p>
+                  <img src="{% static 'img/gu/옐로카펫사상자개수.png' %}">
+                </div>
+                <div>
+                  <p style="margin-top:0.8em; font-weight:bold;">▼ 사상자별 사건수와 옐로 카펫 상관관계 분석 ▼</p>
+                  <img src="{% static 'img/gu/옐로카펫사상자상관관계.png' %}">
+                </div>
+
+                <div style="font-weight:bold; font-size:1.3rem;margin-top:2em;">[연도별 시간대 교통사고 발생건수]</div>
                 <div><img src="{% static 'img/time/시간대별.png' %}"></div>
 
                 <div class="time_chart">
@@ -262,6 +284,9 @@
                   <p style="margin-top:0.8em; font-weight:bold;">▼ 교통사고 시간과 옐로 카펫 상관관계 분석 ▼</p>
                   <img src="{% static 'img/time/시간상관관계.png' %}" style="width:600px; height:300px;">
                 </div>
+
+                <div style="font-weight:bold; font-size:1.3rem;margin-top:2em;">[연도별 옐로 카펫과 교통사고 발생 지점 간의 거리 변화]</div>
+                <div><img src="{% static 'img/gu/옐로카펫사고지역거리.png'%}" style="width:550px;height:500px"></div>
               </div>
 
               <div class="modal-footer">
@@ -287,7 +312,10 @@
               </div>
 
               <div class="modal-body">
-                <div style="text-align: center;"><img src=""></div>
+                <div style="text-align: center;">
+                  <div style="font-weight:bold; font-size:1.3rem;">[2015년-2019년 옐로 카펫 설치지역과 교통사고 발생지역]</div>
+                  <img src="{% static 'img/gu/2015-2019 옐로카펫과 교통사고.png' %}" >
+                </div>
               </div>
 
               <div class="modal-footer">
