@@ -5,10 +5,10 @@ import numpy as np
 
 geo_json = 'https://raw.githubusercontent.com/southkorea/seoul-maps/master/kostat/2013/json/seoul_municipalities_geo_simple.json'
 
-location = './csv/'
-saveLoc = './img/'
+location = '../yellow_carpet/res/data/'
+saveLoc = '../static/img/yellowcarpet/'
 seoul = '서울특별시_'
-filesList = ['1', '동작마포서대문영등포', '송파광진성동', '양천구_구로구_금천구']
+filesList = ['11', '동작마포서대문영등포', '송파광진성동', '양천구_구로구_금천구']
 dates = range(2015, 2020)
 maxYC = 20
 
@@ -68,10 +68,9 @@ def getYearlyYC(intYear):
                       nan_fill_color='white',
                       fill_opacity=1,
                       line_opacity=1,
-                      name=intYear,
                       bins=8).add_to(m)
 
-    m.save(f'{saveLoc}YC_{intYear}.html')
+    m.save(f'{saveLoc}{intYear}yellow.html')
 
 if __name__ == '__main__':
     # for date in dates:
